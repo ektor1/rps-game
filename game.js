@@ -53,7 +53,6 @@ function playRound(humanChoice, computerChoice) {
 }
 
 const choices = document.querySelectorAll("button");
-const result = document.querySelector("div");
 
 let roundResultMessage = document.querySelector("#roundResultMessage");
 let humanScoreMessage = document.querySelector("#humanScoreMessage");
