@@ -17,37 +17,37 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice == computerChoice) {
         roundResultMessage.textContent = "It's a tie!";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return;
 
     } else if (humanChoice == "rock" && computerChoice == "paper") {
         roundResultMessage.textContent = "You lose! Paper beats Rock.";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return 0;
 
     } else if (humanChoice == "rock" && computerChoice == "scissors") {
         roundResultMessage.textContent = "You win! Rock beats Scissors.";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return 1;
 
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
         roundResultMessage.textContent = "You lose! Scissors beats Paper.";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return 0;
         
     } else if (humanChoice == "paper" && computerChoice == "rock") {
         roundResultMessage.textContent = "You win! Paper beats Rock.";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return 1;
         
     } else if (humanChoice == "scissors" && computerChoice == "rock") {
         roundResultMessage.textContent = "You lose! Rock beats Scissors.";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return 0;
 
     } else if (humanChoice == "scissors" && computerChoice == "paper") {
         roundResultMessage.textContent = "You win! Scissors beats Paper.";
-        result.appendChild(roundResultMessage);
+        // result.appendChild(roundResultMessage);
         return 1;
     }
 }
@@ -55,10 +55,10 @@ function playRound(humanChoice, computerChoice) {
 const choices = document.querySelectorAll("button");
 const result = document.querySelector("div");
 
-let roundResultMessage = document.createElement("p");
-let humanScoreMessage = document.createElement("p");
-let computerScoreMessage = document.createElement("p");
-let resultMessage = document.createElement("p");
+let roundResultMessage = document.querySelector("#roundResultMessage");
+let humanScoreMessage = document.querySelector("#humanScoreMessage");
+let computerScoreMessage = document.querySelector("#computerScoreMessage");
+let resultMessage = document.querySelector("#resultMessage");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -66,6 +66,8 @@ let roundsNum = 0;
 
 choices.forEach((button) => {
     button.addEventListener("click", () => {
+
+        resultMessage.textContent = "";
         const humanChoice = button.id;
         const computerChoice = getComputerChoice();
         let roundResult = playRound(humanChoice, computerChoice);
@@ -79,9 +81,6 @@ choices.forEach((button) => {
         humanScoreMessage.textContent = "Your score: " + humanScore;
         computerScoreMessage.textContent = "Computer score: " + computerScore;
 
-        result.appendChild(humanScoreMessage);
-        result.appendChild(computerScoreMessage);
-
         if (humanScore == 5 || computerScore == 5) {
             if (humanScore == computerScore) {
                 resultMessage.textContent = "This game is a tie!";
@@ -92,7 +91,6 @@ choices.forEach((button) => {
             } else {
                 resultMessage.textContent =  "Computer won this game! :(";
             }
-            result.appendChild(resultMessage);
             humanScore = 0;
             computerScore = 0;
         }  
